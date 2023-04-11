@@ -6,22 +6,16 @@ const todoList = () => {
     const markAsComplete = (index) => {
       all[index].completed = true
     }
-  
     const overdue = () => {
-      // Write the date check condition here and return the array
-      // of overdue items accordingly.
-      let overdueTasks = []
+       let overdueTasks = []
       all.forEach((item) => {
         if (item.dueDate === yesterday && item.completed === false) 			{
           overdueTasks.push(item);
         }
       })
       return overdueTasks.reverse();
-    }
-  
+    } 
     const dueToday = () => {
-      // Write the date check condition here and return the array
-      // of todo items that are due today accordingly.
       let dueTodayTasks = []
       all.forEach((item) => {
         if (item.dueDate === today) {
@@ -30,10 +24,7 @@ const todoList = () => {
       })
       return dueTodayTasks.reverse();
     }
-  
     const dueLater = () => {
-      // Write the date check condition here and return the array
-      // of todo items that are due later accordingly.
       let futureTasks = []
       all.forEach((item) => {
         if (item.dueDate === tomorrow) {
@@ -42,10 +33,7 @@ const todoList = () => {
       })
       return futureTasks.reverse();
     }
-  
-    const toDisplayableList = (list) => {
-      // Format the To-Do list here, and return the output string
-      // as per the format given above.
+   const toDisplayableList = (list) => {
       let finalDisplayArray = [];
       list.forEach((item,index) => {
         if (item.dueDate === yesterday) {
@@ -73,8 +61,7 @@ const todoList = () => {
       let temp = finalDisplayArray.join("\n");
       return temp;
     }
-  
-    return {
+     return {
       all,
       add,
       markAsComplete,
@@ -83,8 +70,7 @@ const todoList = () => {
       dueLater,
       toDisplayableList
     };
-  };
-  
+  };  
   // ####################################### #
   // DO NOT CHANGE ANYTHING BELOW THIS LINE. #
   // ####################################### #
@@ -94,8 +80,7 @@ const todoList = () => {
   const formattedDate = d => {
     return d.toISOString().split("T")[0]
   }
-  
-  var dateToday = new Date()
+   var dateToday = new Date()
   const today = formattedDate(dateToday)
   const yesterday = formattedDate(
     new Date(new Date().setDate(dateToday.getDate() - 1))
@@ -129,22 +114,18 @@ const todoList = () => {
     dueDate: tomorrow,
     completed: false
   })
-  
-  console.log("My Todo-list\n")
-  
+  console.log("My Todo-list\n") 
   console.log("Overdue")
   var overdues = todos.overdue()
   var formattedOverdues = todos.toDisplayableList(overdues)
   console.log(formattedOverdues)
   console.log("\n")
-  
   console.log("Due Today")
   let itemsDueToday = todos.dueToday()
   let formattedItemsDueToday = todos.toDisplayableList(itemsDueToday)
   console.log(formattedItemsDueToday)
   console.log("\n")
-  
-  console.log("Due Later")
+   console.log("Due Later")
   let itemsDueLater = todos.dueLater()
   let formattedItemsDueLater = todos.toDisplayableList(itemsDueLater)
   console.log(formattedItemsDueLater)
